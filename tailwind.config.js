@@ -5,7 +5,19 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'home-desktop': "url('./assets/home/background-home-desktop.jpg')",
+        'home-mobile': "url('./assets/home/background-home-mobile.jpg')",
+        'destination-desktop': "url('./assets/destination/background-destination-desktop.jpg')",
+        'crew-desktop': "url('./assets/crew/background-crew-desktop.jpg')",
+      },
+      fontFamily: {
+        barlow: 'Barlow',
+        barlowCondensed: 'Barlow Condensed',
+        bellefair: 'Bellefair'
+      }
+    },
   },
   plugins: [],
 }
