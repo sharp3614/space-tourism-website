@@ -1,18 +1,22 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { DestinationTabs } from "../data/destination";
+import DestinationTabs from "../data/data.json";
 
 type Tabs = {
-  label: string;
-  imgSrc: string;
-  id: string;
+  name: string;
+  images: {
+    png: string;
+    webp: string;
+  };
   description: string;
-  avgDistance: string;
-  estTravelTime: string;
+  distance: string;
+  travel: string;
 };
 
 const Destination = () => {
-  const [selectedTab, setSelectedTab] = useState<Tabs>(DestinationTabs[0]);
+  const [selectedTab, setSelectedTab] = useState<Tabs>(
+    DestinationTabs.destinations[0]
+  );
   return (
     <div className="bg-destination-mobile pt-20 relative md:bg-destination-desktop text-white h-screen">
       <div className="flex flex-col md:flex-row w-full justify-evenly items-center">
@@ -25,33 +29,33 @@ const Destination = () => {
           <div className="flex flex-col justify-evenly md:h-[90vh]">
             <div className="flex justify-center gap-4 text-base md:text-[28px]">
               <span className="font-bold text-[#ccc]">01</span>
-              <h1 className="">Pick your destination</h1>
+              <h1>Pick your destination</h1>
             </div>
             <img
-              src={selectedTab.imgSrc}
+              src={"src/" + selectedTab.images.webp}
               className="p-4 size-[170px] md:size-[445px]"
-              alt="moon"
+              alt={selectedTab.name}
             />
           </div>
         </motion.div>
         <div className="flex flex-col mt-4 items-center md:items-start w-full md:max-w-[445px] h-[472px]">
           <ul className="flex gap-8 mb-8">
-            {DestinationTabs.map((item) => (
+            {DestinationTabs.destinations.map((item) => (
               <motion.li
-                key={item.label}
+                key={item.name}
                 className={`select-none cursor-pointer border-b-2 border-transparent hover:border-white ${
-                  item.id === selectedTab.id && "border-white"
+                  item.name === selectedTab.name && "border-white"
                 }`}
                 onClick={() => setSelectedTab(item)}
               >
-                {item.label}
+                {item.name}
               </motion.li>
             ))}
           </ul>
           <main>
             <AnimatePresence mode="wait">
               <motion.div
-                key={selectedTab ? selectedTab.label : "empty"}
+                key={selectedTab ? selectedTab.name : "empty"}
                 initial={{ x: 10, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -10, opacity: 0 }}
@@ -60,7 +64,7 @@ const Destination = () => {
                 {selectedTab ? (
                   <div className="flex flex-col md:items-start items-center p-1">
                     <h1 className="text-[92px] tracking-widest leading-[5rem] font-bellefair mt-4 mb-8 font-thin">
-                      {selectedTab.label}
+                      {selectedTab.name}
                     </h1>
                     <p className="text-[18px] font-barlow flex-1 text-center md:text-start">
                       {selectedTab.description}
@@ -71,7 +75,7 @@ const Destination = () => {
                           AVG. DISTANCE
                         </span>
                         <span className="text-[28px]">
-                          {selectedTab.avgDistance}
+                          {selectedTab.distance}
                         </span>
                       </div>
                       <div className="w-40 flex flex-col">
@@ -79,7 +83,7 @@ const Destination = () => {
                           Est. travel time
                         </span>
                         <span className="text-[28px]">
-                          {selectedTab.estTravelTime}
+                          {selectedTab.travel}
                         </span>
                       </div>
                     </div>
