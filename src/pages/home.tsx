@@ -13,8 +13,10 @@ const Home = () => {
           experience! Explore
         </p>
       </div>
-      <div className="w-[274px] h-[274px] hover:scale-[1.1] cursor-pointer ease-linear hover:transition-all hover:shadow-red-300 text-[32px] absolute right-[10%] bottom-[5%] flex justify-center items-center rounded-full bg-white text-black">
-        EXPLORE
+      <div className="w-[274px] h-[274px] before:w-[450px] before:h-[450px] before:content[''] before:absolute hover:before:bg-white/10 hover:before:transition-all before:ease-linear before:rounded-full before:-z-50 z-10 cursor-pointer text-[32px] absolute right-[10%] bottom-[15%] flex justify-center items-center">
+        <h1 className="w-full h-full flex justify-center items-center rounded-full bg-white text-black">
+          EXPLORE
+        </h1>
       </div>
     </div>
   );
