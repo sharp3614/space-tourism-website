@@ -3,10 +3,10 @@ import Navbar from "./components/navbar";
 
 const App = () => {
   return (
-    <>
+    <div className="fixed w-full">
       <Navbar />
       <Outlet />
-    </>
+    </div>
   );
 };
 

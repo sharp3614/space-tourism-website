@@ -43,7 +43,7 @@ const Destination = () => {
             {DestinationTabs.destinations.map((item) => (
               <motion.li
                 key={item.name}
-                className={`select-none cursor-pointer border-b-2 border-transparent hover:border-white ${
+                className={`select-none uppercase cursor-pointer border-b-2 border-transparent hover:border-white ${
                   item.name === selectedTab.name && "border-white"
                 }`}
                 onClick={() => setSelectedTab(item)}
